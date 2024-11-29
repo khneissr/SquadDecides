@@ -379,6 +379,13 @@ fun DiscussionScreen(
         } else null
     }
 
+    LaunchedEffect(allMessages.size, shouldScrollToLast) {
+        if (shouldScrollToLast) {
+            listState.animateScrollToItem(allMessages.size)
+            shouldScrollToLast = false
+        }
+    }
+
     InviteDialog(
         showDialog = showInviteDialog,
         username = inviteUsername,
@@ -477,3 +484,4 @@ fun DiscussionScreen(
         }
     }
 }
+
